@@ -3,19 +3,10 @@ import { ethers } from 'ethers';
 import { RLP } from 'ethers/lib/utils';
 
 
-export function Results() {
+export function Results({arr}: {arr: Result[]}) {
 
-    const sampleInput = [
-        {nonce: 1, address: '0x1234'},
-        {nonce: 2, address: '0x5678'},
-        {nonce: 3, address: '0x9abc'},
-        {nonce: 4, address: '0xdef0'},
-        {nonce: 5, address: '0x1234'},
-        {nonce: 6, address: '0x5678'},
-        {nonce: 7, address: '0x9abc'},
-    ]
 
-    const sampleData = sampleInput.map(
+    const data = arr.map(
         (item) => (
             <tr key={item.nonce}>
                 <td>{item.nonce}</td>
@@ -29,7 +20,6 @@ export function Results() {
     return(
         <>
             <Title order={1}>Results</Title>
-            <Title order={2}>Current nonce: 5</Title>
 
             <Table verticalSpacing={'xs'}>
                 <thead>
@@ -40,7 +30,7 @@ export function Results() {
                 </thead>
 
                 <tbody>
-                    {sampleData}
+                    {data}
                 </tbody>
             </Table>
         </>
